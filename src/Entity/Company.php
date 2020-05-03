@@ -28,9 +28,21 @@ class Company
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="company")
+     */
+    private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Storage", mappedBy="company")
+     */
+    private $storages;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->storages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +87,68 @@ class Company
             // set the owning side to null (unless already changed)
             if ($product->getCompany() === $this) {
                 $product->setCompany(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            // set the owning side to null (unless already changed)
+            if ($category->getCompany() === $this) {
+                $category->setCompany(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Storage[]
+     */
+    public function getStorages(): Collection
+    {
+        return $this->storages;
+    }
+
+    public function addStorage(Storage $storage): self
+    {
+        if (!$this->storages->contains($storage)) {
+            $this->storages[] = $storage;
+            $storage->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStorage(Storage $storage): self
+    {
+        if ($this->storages->contains($storage)) {
+            $this->storages->removeElement($storage);
+            // set the owning side to null (unless already changed)
+            if ($storage->getCompany() === $this) {
+                $storage->setCompany(null);
             }
         }
 

@@ -28,6 +28,11 @@ class Storage
      */
     private $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="storages")
+     */
+    private $company;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -74,6 +79,18 @@ class Storage
             $this->products->removeElement($product);
             $product->removeStorage($this);
         }
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
 
         return $this;
     }
