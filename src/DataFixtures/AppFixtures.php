@@ -13,6 +13,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        
         for ($i=0; $i < 5; $i++) { 
             $company = new Company();
             $company->setName('entreprise n°'.$i)
