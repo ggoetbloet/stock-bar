@@ -55,7 +55,7 @@ class Category
     public function initializeSlug() {
         if (empty($this->slug)) {
             $slugify = new Slugify();
-            $this->slug = $slugify->slugify($this->name).'-'.$this->id;
+            $this->slug = $slugify->slugify($this->name);
         }
     }
 

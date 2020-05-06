@@ -21,11 +21,12 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/{slug}", name="show_product")
+     * @Route("/product/{id}", name="show_product", requirements={"id":"[0-9\-]*"})
+     * @return Response
      */
-    public function show( $slug, ProductRepository $productRepository)
+    public function show($id, ProductRepository $productRepository)
     {
-        $product = $productRepository->findOneBySlug($slug);
+        $product = $productRepository->find($id);
 
         return $this->render('product/show.html.twig', [
             'product' => $product,

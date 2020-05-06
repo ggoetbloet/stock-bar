@@ -14,7 +14,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 1; $i++) { 
             $company = new Company();
             $company->setName('entreprise n°'.$i)
                     ;
@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
                 $category->setName('Categorie n°'.$c)
                         ->setCompany($company)
                         ;
-
+                        
                     for ($p=0; $p < mt_rand(5, 100); $p++) { 
                         $product = new Product();
                         $product->setName('produit C'.$c.' n°'.$p)

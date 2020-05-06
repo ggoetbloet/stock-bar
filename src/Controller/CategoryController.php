@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/category", name="index_category")
+     * @Route("/categories", name="index_category")
      */
     public function index(CategoryRepository $categoryRepository)
     {
@@ -17,6 +17,18 @@ class CategoryController extends AbstractController
 
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+        ]);
+    }
+
+    /**
+     * @Route("/category/{id}", name="show_category")
+     */
+    public function show($id, CategoryRepository $categoryRepository)
+    {
+        $category = $categoryRepository->find($id);
+
+        return $this->render('category/show.html.twig', [
+            'category' => $category,
         ]);
     }
 }

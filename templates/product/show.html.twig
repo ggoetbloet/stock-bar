@@ -5,24 +5,38 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        
-            <div class="col-md-3 mt-4">
-                <div class="card">
-                    <div class="card-header">
-                        {% if product.category %}
-                            {{product.category.name}}
-                        {% else %}
-                            N.C.
-                        {% endif %}
+
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Infos
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://via.placeholder.com/200x200" alt="">
+                        </div>
+                        <div class="col-9">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text">{% if product.category %} {{product.category.name}} {% else %} N.C. {% endif %}</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                      <h5 class="card-title">{{product.name}}</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Voir plus</a>
-                    </div>
+
                 </div>
             </div>
+        </div>
 
+        <div class="col-md-6 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Dernière activités
+                </div>
+                <div class="card-body">
+                    Paul Durhant : 26/05/2020 - 15h26 : Entrée de 355 {{product.name}}
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 {% endblock %}

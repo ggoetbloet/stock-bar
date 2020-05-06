@@ -15,7 +15,7 @@
                     <div class="card-body">
                       <h5 class="card-title"> {{category.products|length}} Produits</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Voir les produits</a>
+                      <a href="{{path('show_category', {id: category.id})}}" class="btn btn-primary">Voir les produits</a>
                     </div>
                 </div>
             </div>
