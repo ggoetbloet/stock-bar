@@ -2,6 +2,9 @@
     "cocur/slugify": {
         "version": "v4.0.0"
     },
+    "codeitnowin/barcode": {
+        "version": "3.0.3"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
