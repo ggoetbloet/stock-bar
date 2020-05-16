@@ -44,6 +44,8 @@ class ProductController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $product->setAuthor($this->getUser());
+
             $manager->persist($product);
             $manager->flush();
 

@@ -1,20 +1,112 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompanyController!{% endblock %}
+{% block title %}{{product.name}}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container">
+    <div class="row">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Details
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <img src="https://via.placeholder.com/200x200" alt="">
+                            <p class="text-center"><small>Ajouter par {{product.author.firstname}} {{product.author.lastname}}</small></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p>{% if product.category %} {{product.category.name}} {% else %} N.C. {% endif %}</p>
+                            <p>455 en stock</p>
+                        </div>
+                        <div class="col-md-3 mr-auto">
+                            <img src="data:image/png;base64,{{barCode}}" />
+                        </div>
+                    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/wamp64/www/Faust_Lab/stock-bar/src/Controller/CompanyController.php'|file_link(0) }}">src/Controller/CompanyController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/wamp64/www/Faust_Lab/stock-bar/templates/company/index.html.twig'|file_link(0) }}">templates/company/index.html.twig</a></code></li>
-    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    état des stocks
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cave</th>
+                                <th scope="col">Bar 1</th>
+                                <th scope="col">Bar 2</th>
+                                <th scope="col">Bar 3</th>
+              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>522</td>
+                                <td>142</td>
+                                <td>200</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Dernière activités
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date - Heure</th>
+                                <th scope="col">Menbre</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Paul Durhant</td>
+                                <td>Ajoute 355 {{product.name}} à cave</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Jacob Thornton</td>
+                                <td>Transfere 425 {{product.name}} de cave à bar</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Larry Bird</td>
+                                <td>inventorie 562 {{product.name}} au cave</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Laurent Borre</td>
+                                <td>inventorie 121 {{product.name}} au bar</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
 </div>
 {% endblock %}

@@ -6,19 +6,35 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-12 mt-4">
+        <div class="col-lg-8 mt-4">
             <div class="card">
+                <div class="card-header">
+                    Details
+                </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-4 text-center">
                             <img src="https://via.placeholder.com/200x200" alt="">
+                            <p ><small>Ajouter par {{product.author.firstname}} {{product.author.lastname}}</small></p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-8">
                             <h5 class="card-title">{{product.name}}</h5>
-                            <p class="card-text">{% if product.category %} {{product.category.name}} {% else %} N.C. {% endif %}</p>
-                            
+                            <p>{% if product.category %} {{product.category.name}} {% else %} N.C. {% endif %}</p>
+                            <p>455 en stock</p>
                         </div>
-                        <div class="col-md-3 mr-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    Qr Code
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="ml-auto mr-auto">
                             <img src="data:image/png;base64,{{barCode}}" />
                         </div>
                     </div>
@@ -27,13 +43,78 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-4">
+        <div class="col-md-12 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    état des stocks
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cave</th>
+                                <th scope="col">Bar 1</th>
+                                <th scope="col">Bar 2</th>
+                                <th scope="col">Bar 3</th>
+              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>522</td>
+                                <td>142</td>
+                                <td>200</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
             <div class="card">
                 <div class="card-header">
                     Dernière activités
                 </div>
                 <div class="card-body">
-                    Paul Durhant : 26/05/2020 - 15h26 : Entrée de 355 {{product.name}}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date - Heure</th>
+                                <th scope="col">Menbre</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Paul Durhant</td>
+                                <td>Ajoute 355 {{product.name}} à cave</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Jacob Thornton</td>
+                                <td>Transfere 425 {{product.name}} de cave à bar</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Larry Bird</td>
+                                <td>inventorie 562 {{product.name}} au cave</td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">26/05/2020 - 15h26</th>
+                                <td>Laurent Borre</td>
+                                <td>inventorie 121 {{product.name}} au bar</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                 </div>
             </div>
         </div>

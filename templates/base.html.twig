@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -20,26 +23,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vue d'ensemble</a>
+                        <a class="nav-link" href="#">Tableau de bord</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('index_product')}}">Liste des produits</a>
+                        <a class="nav-link" href="{{path('index_product')}}">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('index_category')}}">Liste des categories</a>
+                        <a class="nav-link" href="{{path('index_category')}}">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">l'équipe</a>
+                        <a class="nav-link" href="#">L'équipe</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">statistiques</a>
-                    </li>
+
                   </ul>
                   
                   <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                          <a href="#" class="nav-link">Mon Compte</a>
-                      </li>
+                    {% if app.user %}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink">
+                                <img src="{{ app.user.picture }}" class="avatar avatar-mini" alt="Avatar de {{ app.user.firstname }} {{ app.user.lastname }}">
+                                {{ app.user.firstname }} {{ app.user.lastname }}
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDopdownLink">
+                                <a href="{{ path('account_profile') }}" class="dropdown-item">Modifier mon profil</a>
+                                <a href="{{ path('account_password') }}" class="dropdown-item">Changer mon mot de passe</a>
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ path('account_logout') }}" class="dropdown-item">Déconnexion</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{{ path('account_register') }}" class="nav-link">Inscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('account_login') }}" class="nav-link">Connexion</a>
+                        </li>
+                    {% endif %}
                   </ul>
             </div>
           </nav>
@@ -60,9 +79,12 @@
     <footer>
         
     </footer>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e81839867a.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('build/js/app.js') }}"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
